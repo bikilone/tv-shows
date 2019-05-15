@@ -1,18 +1,40 @@
 import React from "react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Button,
+  NavDropdown,
+  Col
+} from "react-bootstrap";
 
 const Header = () => {
   return (
-    <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="#home">TV Shows</Navbar.Brand>
-      <Nav className="mr-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#features">Library</Nav.Link>
-      </Nav>
-      <Form inline>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        <Button variant="outline-info">Search</Button>
-      </Form>
+    <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+      <Navbar.Brand href="#home">TV SHOWS</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="#features">Library</Nav.Link>
+        </Nav>
+        <Nav>
+          <Form inline>
+            <Form.Row>
+              <Col>
+                <FormControl
+                  type="text"
+                  placeholder="Search"
+                  style={{ display: "inline-block" }}
+                />
+              </Col>
+              <Col>
+                <Button variant="outline-info">Search</Button>
+              </Col>
+            </Form.Row>
+          </Form>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 };

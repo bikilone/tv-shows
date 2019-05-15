@@ -18,9 +18,8 @@ class CardList extends Component {
   }
   render() {
     const { tvShows } = this.props;
-    console.log(tvShows);
     return (
-      <Container>
+      <Container fluid={true} style={{ marginTop: "20px" }}>
         <Row>
           {tvShows.map(tvShow => (
             <SingleCard
