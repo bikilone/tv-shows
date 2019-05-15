@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchTvShows } from "../../redux/actions";
 import SingleCard from "../SingleCard/SingleCard";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 
 const mapStateToProps = state => ({
-  tvShows: state.tvShows
+  tvShows: state.tvShows,
+  isPending: state.isPending
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -17,8 +18,15 @@ class CardList extends Component {
     this.props.fetchTvShows();
   }
   render() {
-    const { tvShows } = this.props;
-    return (
+    const { tvShows, isPending } = this.props;
+    return isPending ? (
+      <div
+        className="d-flex justify-content-center"
+        style={{ marginTop: "40vh" }}
+      >
+        <Spinner animation="border" />
+      </div>
+    ) : (
       <Container fluid={true} style={{ marginTop: "20px" }}>
         <Row>
           {tvShows.map(tvShow => (
