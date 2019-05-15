@@ -2,7 +2,8 @@ import {
   FETCH_TV_SHOWS_SUCCESS,
   FETCH_TV_SHOWS_FAILED,
   GET_LIBRARY,
-  GET_LIBRARY_FAILED
+  GET_LIBRARY_FAILED,
+  SAVE_TV_SHOW
 } from "./constants";
 
 const initialState = {
@@ -24,12 +25,20 @@ export const fetchTvShows = (state = initialState, action = {}) => {
 };
 
 export const getLibrary = (state = initialState, action = {}) => {
-  console.log(action.type);
   switch (action.type) {
     case GET_LIBRARY:
-      return { ...state, tvShows: action.payload };
+      return { ...state, library: action.payload, error: "" };
     case GET_LIBRARY_FAILED:
       return { ...state, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const saveToLibrary = (state = initialState, action = {}) => {
+  switch (action.type) {
+    case SAVE_TV_SHOW:
+      return state;
     default:
       return state;
   }

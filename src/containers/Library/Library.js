@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getLibrary } from "../../redux/actions";
+import { getLibrary, saveToLibrary } from "../../redux/actions";
 import SingleCard from "../../components/SingleCard/SingleCard";
 import { Container, Row } from "react-bootstrap";
 
 const mapStateToProps = state => ({
-  tvShows: state.getLibrary.library,
+  library: state.getLibrary.library,
   error: state.getLibrary.error
 });
 
 const mapDispatchToProps = dispatch => ({
-  getLibrary: () => dispatch(getLibrary())
+  getLibrary: () => dispatch(getLibrary()),
+  saveToLibrary: data => {
+    dispatch(saveToLibrary(data));
+    dispatch(getLibrary());
+  }
 });
 
 class Library extends Component {
@@ -18,25 +22,30 @@ class Library extends Component {
     this.props.getLibrary();
   }
   render() {
-    const { tvShows, error } = this.props;
-    return error ? (
+    const { library, error, saveToLibrary } = this.props;
+    return library.length < 1 ? (
       <div
         className="d-flex justify-content-center"
         style={{ marginTop: "40vh" }}
       >
-        {error}
+        Library is empty
       </div>
     ) : (
       <Container fluid={true} style={{ marginTop: "20px" }}>
         <Row>
-          {tvShows.map(tvShow => (
-            <SingleCard
-              key={tvShow.id}
-              src={tvShow.image.medium}
-              title={tvShow.name}
-              text={tvShow.summary}
-            />
-          ))}
+          {library.map(tvShow => {
+            return (
+              <SingleCard
+                fill="blue"
+                id={tvShow.id}
+                key={tvShow.id}
+                src={tvShow.image}
+                title={tvShow.title}
+                text={tvShow.text}
+                saveToLibrary={saveToLibrary}
+              />
+            );
+          })}
         </Row>
       </Container>
     );

@@ -6,10 +6,14 @@ import * as serviceWorker from "./serviceWorker";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import thunkMiddleware from "redux-thunk";
-import { fetchTvShows, getLibrary } from "./redux/reducers";
+import { fetchTvShows, getLibrary, saveToLibrary } from "./redux/reducers";
 import { HashRouter } from "react-router-dom";
 
-const rootReducer = combineReducers({ fetchTvShows, getLibrary });
+const rootReducer = combineReducers({
+  fetchTvShows,
+  getLibrary,
+  saveToLibrary
+});
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 

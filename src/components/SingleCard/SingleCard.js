@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, Button, Col } from "react-bootstrap";
+import { IoIosStar } from "react-icons/io";
 
 export default function SingleCard(props) {
-  const { src, title, text } = props;
+  const { src, title, text, saveToLibrary, id, fill } = props;
   const createMarkup = () => ({
     __html: text
   });
@@ -26,6 +27,18 @@ export default function SingleCard(props) {
             }}
           />
           <Button variant="primary">Details</Button>
+          <IoIosStar
+            style={{
+              float: "right",
+              color: "white",
+              stroke: "blue",
+              strokeWidth: "3px",
+              cursor: "pointer"
+            }}
+            size="2em"
+            fill={fill}
+            onClick={() => saveToLibrary({ id, image: src, title, text })}
+          />
         </Card.Body>
       </Card>
     </Col>
