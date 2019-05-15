@@ -1,8 +1,18 @@
 import React from "react";
 import { Navbar, Nav, Form, FormControl, Button, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { searchTvShows } from "../../redux/actions";
 
-const Header = () => {
+const mapStateToProps = state => ({
+  search: state.searchTvShows.search
+});
+
+const mapDispatchToProps = dispatch => ({
+  searchTvShows: event => dispatch(searchTvShows(event.target.value))
+});
+
+const Header = props => {
   return (
     <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
       <Navbar.Brand>
@@ -21,6 +31,7 @@ const Header = () => {
                   type="text"
                   placeholder="Search"
                   style={{ display: "inline-block" }}
+                  onChange={props.searchTvShows}
                 />
               </Col>
               <Col>
@@ -34,4 +45,7 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);

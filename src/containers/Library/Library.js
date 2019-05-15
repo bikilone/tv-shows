@@ -6,7 +6,8 @@ import { Container, Row } from "react-bootstrap";
 
 const mapStateToProps = state => ({
   library: state.getLibrary.library,
-  error: state.getLibrary.error
+  error: state.getLibrary.error,
+  search: state.searchTvShows.search
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -22,7 +23,10 @@ class Library extends Component {
     this.props.getLibrary();
   }
   render() {
-    const { library, error, saveToLibrary } = this.props;
+    const { library, error, saveToLibrary, search } = this.props;
+    const filteredLibrary = library.filter(tvShow =>
+      tvShow.title.toLowerCase().includes(search.toLowerCase())
+    );
     return library.length < 1 ? (
       <div
         className="d-flex justify-content-center"
@@ -33,7 +37,7 @@ class Library extends Component {
     ) : (
       <Container fluid={true} style={{ marginTop: "20px" }}>
         <Row>
-          {library.map(tvShow => {
+          {filteredLibrary.map(tvShow => {
             return (
               <SingleCard
                 fill="blue"

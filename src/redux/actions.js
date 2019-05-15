@@ -3,7 +3,8 @@ import {
   FETCH_TV_SHOWS_FAILED,
   GET_LIBRARY,
   GET_LIBRARY_FAILED,
-  SAVE_TV_SHOW
+  SAVE_TV_SHOW,
+  SEARCH_TV_SHOWS
 } from "./constants";
 
 export const fetchTvShows = () => dispatch => {
@@ -18,11 +19,6 @@ export const getLibrary = () => {
     return {
       type: GET_LIBRARY,
       payload: JSON.parse(localStorage.getItem("library"))
-    };
-  } else {
-    return {
-      type: GET_LIBRARY_FAILED,
-      payload: "Library is empty"
     };
   }
 };
@@ -60,3 +56,8 @@ export const saveToLibrary = data => {
     type: SAVE_TV_SHOW
   };
 };
+
+export const searchTvShows = text => ({
+  type: SEARCH_TV_SHOWS,
+  payload: text
+});

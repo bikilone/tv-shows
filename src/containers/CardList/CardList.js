@@ -7,7 +7,8 @@ import { Container, Row, Spinner } from "react-bootstrap";
 const mapStateToProps = state => ({
   tvShows: state.fetchTvShows.tvShows,
   isPending: state.fetchTvShows.isPending,
-  library: state.getLibrary.library
+  library: state.getLibrary.library,
+  search: state.searchTvShows.search
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -25,8 +26,10 @@ class CardList extends Component {
     this.props.getLibrary();
   }
   render() {
-    const { tvShows, isPending, saveToLibrary, library } = this.props;
-    console.log(library);
+    const { tvShows, isPending, saveToLibrary, library, search } = this.props;
+    const filteredTvShows = tvShows.filter(tvShow =>
+      tvShow.name.toLowerCase().includes(search.toLowerCase())
+    );
     return isPending ? (
       <div
         className="d-flex justify-content-center"
@@ -37,7 +40,7 @@ class CardList extends Component {
     ) : (
       <Container fluid={true} style={{ marginTop: "20px" }}>
         <Row>
-          {tvShows.map(tvShow => {
+          {filteredTvShows.map(tvShow => {
             const index = library.findIndex(
               libraryShow =>
                 JSON.stringify(libraryShow.id) === JSON.stringify(tvShow.id)
