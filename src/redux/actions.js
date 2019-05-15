@@ -2,9 +2,10 @@ import {
   FETCH_TV_SHOWS_SUCCESS,
   FETCH_TV_SHOWS_FAILED,
   GET_LIBRARY,
-  GET_LIBRARY_FAILED,
   SAVE_TV_SHOW,
-  SEARCH_TV_SHOWS
+  SEARCH_TV_SHOWS,
+  FETCH_SINGLE_SHOW,
+  FETCH_SINGLE_SHOW_FAILED
 } from "./constants";
 
 export const fetchTvShows = () => dispatch => {
@@ -61,3 +62,20 @@ export const searchTvShows = text => ({
   type: SEARCH_TV_SHOWS,
   payload: text
 });
+
+export const fetchSingleShow = id => dispatch => {
+  fetch(`http://api.tvmaze.com/shows/${id}`)
+    .then(data => data.json())
+    .then(data =>
+      dispatch({
+        type: FETCH_SINGLE_SHOW,
+        payload: data
+      })
+    )
+    .catch(error =>
+      dispatch({
+        type: FETCH_SINGLE_SHOW_FAILED,
+        payload: error
+      })
+    );
+};

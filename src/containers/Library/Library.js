@@ -23,7 +23,7 @@ class Library extends Component {
     this.props.getLibrary();
   }
   render() {
-    const { library, error, saveToLibrary, search } = this.props;
+    const { library, saveToLibrary, search } = this.props;
     const filteredLibrary = library.filter(tvShow =>
       tvShow.title.toLowerCase().includes(search.toLowerCase())
     );

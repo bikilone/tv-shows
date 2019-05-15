@@ -3,7 +3,9 @@ import {
   FETCH_TV_SHOWS_FAILED,
   GET_LIBRARY,
   SAVE_TV_SHOW,
-  SEARCH_TV_SHOWS
+  SEARCH_TV_SHOWS,
+  FETCH_SINGLE_SHOW,
+  FETCH_SINGLE_SHOW_FAILED
 } from "./constants";
 
 const initialState = {
@@ -11,7 +13,8 @@ const initialState = {
   tvShows: [],
   error: "",
   library: [],
-  search: ""
+  search: "",
+  singleShow: ""
 };
 
 export const fetchTvShows = (state = initialState, action = {}) => {
@@ -47,6 +50,17 @@ export const searchTvShows = (state = initialState, action = {}) => {
   switch (action.type) {
     case SEARCH_TV_SHOWS:
       return { ...state, search: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const fetchSingleShow = (state = initialState, action = {}) => {
+  switch (action.type) {
+    case FETCH_SINGLE_SHOW:
+      return { ...state, singleShow: action.payload, isPending: false };
+    case FETCH_SINGLE_SHOW_FAILED:
+      return { ...state, error: action.payload, isPending: false };
     default:
       return state;
   }

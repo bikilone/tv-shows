@@ -10,7 +10,8 @@ import {
   fetchTvShows,
   getLibrary,
   saveToLibrary,
-  searchTvShows
+  searchTvShows,
+  fetchSingleShow
 } from "./redux/reducers";
 import { HashRouter } from "react-router-dom";
 
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   fetchTvShows,
   getLibrary,
   saveToLibrary,
-  searchTvShows
+  searchTvShows,
+  fetchSingleShow
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
