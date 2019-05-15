@@ -1,30 +1,30 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchTvShows } from "../../redux/actions";
-import SingleCard from "../SingleCard/SingleCard";
-import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { getLibrary } from "../../redux/actions";
+import SingleCard from "../../components/SingleCard/SingleCard";
+import { Container, Row } from "react-bootstrap";
 
 const mapStateToProps = state => ({
-  tvShows: state.tvShows,
-  isPending: state.isPending
+  tvShows: state.getLibrary.library,
+  error: state.getLibrary.error
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchTvShows: () => dispatch(fetchTvShows())
+  getLibrary: () => dispatch(getLibrary())
 });
 
-class CardList extends Component {
+class Library extends Component {
   componentDidMount() {
-    this.props.fetchTvShows();
+    this.props.getLibrary();
   }
   render() {
-    const { tvShows, isPending } = this.props;
-    return isPending ? (
+    const { tvShows, error } = this.props;
+    return error ? (
       <div
         className="d-flex justify-content-center"
         style={{ marginTop: "40vh" }}
       >
-        <Spinner animation="border" />
+        {error}
       </div>
     ) : (
       <Container fluid={true} style={{ marginTop: "20px" }}>
@@ -46,4 +46,4 @@ class CardList extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CardList);
+)(Library);
