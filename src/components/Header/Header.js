@@ -21,7 +21,8 @@ const Header = props => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Link to="/library">Library</Link>
+          <Nav.Link>LIBRARY</Nav.Link>
+          <Link to="/library" />
         </Nav>
         <Nav>
           <Form inline>

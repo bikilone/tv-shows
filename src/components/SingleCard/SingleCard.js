@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Button, Col } from "react-bootstrap";
 import { IoIosStar } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export default function SingleCard(props) {
   const { src, title, text, saveToLibrary, id, fill } = props;
@@ -26,7 +27,9 @@ export default function SingleCard(props) {
               overflow: "hidden"
             }}
           />
-          <Button variant="primary">Details</Button>
+          <Button variant="primary">
+            <Link to={`/${id}`}>Details</Link>
+          </Button>
           <IoIosStar
             style={{
               float: "right",

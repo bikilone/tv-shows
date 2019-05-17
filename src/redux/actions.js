@@ -5,8 +5,10 @@ import {
   SAVE_TV_SHOW,
   SEARCH_TV_SHOWS,
   FETCH_SINGLE_SHOW,
-  FETCH_SINGLE_SHOW_FAILED
+  FETCH_SINGLE_SHOW_FAILED,
+  GET_LIBRARY_FAILED
 } from "./constants";
+import dataService from "../services/dataService";
 
 export const fetchTvShows = () => dispatch => {
   fetch("http://api.tvmaze.com/shows")
@@ -21,6 +23,8 @@ export const getLibrary = () => {
       type: GET_LIBRARY,
       payload: JSON.parse(localStorage.getItem("library"))
     };
+  } else {
+    return { type: GET_LIBRARY_FAILED, payload: "Library is empty" };
   }
 };
 
@@ -64,8 +68,13 @@ export const searchTvShows = text => ({
 });
 
 export const fetchSingleShow = id => dispatch => {
-  fetch(`http://api.tvmaze.com/shows/${id}`)
+  fetch(`http://api.tvmaze.com/shows/${id}?embed[]=cast&embed[]=seasons`)
     .then(data => data.json())
+    .then(data => {
+      console.log(data);
+      return data;
+    })
+    .then(data => new dataService(data))
     .then(data =>
       dispatch({
         type: FETCH_SINGLE_SHOW,
