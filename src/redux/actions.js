@@ -68,7 +68,7 @@ export const searchTvShows = text => ({
 });
 
 export const fetchSingleShow = id => dispatch => {
-  fetch(`http://api.tvmaze.com/shows/${id}?embed[]=cast&embed[]=seasons`)
+  fetch(`https://api.tvmaze.com/shows/${id}?embed[]=cast&embed[]=seasons`)
     .then(data => data.json())
     .then(data => {
       return data;
