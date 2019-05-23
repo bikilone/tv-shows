@@ -11,7 +11,7 @@ import {
 import dataService from "../services/dataService";
 
 export const fetchTvShows = () => dispatch => {
-  fetch("http://api.tvmaze.com/shows")
+  fetch("https://api.tvmaze.com/shows")
     .then(data => data.json())
     .then(data => dispatch({ type: FETCH_TV_SHOWS_SUCCESS, payload: data }))
     .catch(error => dispatch({ type: FETCH_TV_SHOWS_FAILED, payload: error }));
