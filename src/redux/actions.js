@@ -71,7 +71,6 @@ export const fetchSingleShow = id => dispatch => {
   fetch(`http://api.tvmaze.com/shows/${id}?embed[]=cast&embed[]=seasons`)
     .then(data => data.json())
     .then(data => {
-      console.log(data);
       return data;
     })
     .then(data => new dataService(data))

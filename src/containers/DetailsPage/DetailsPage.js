@@ -32,7 +32,6 @@ class DetailsPage extends Component {
     const createMarkup = () => ({
       __html: summary
     });
-    console.log(singleShow);
     return isPending ? (
       <div
         className="d-flex justify-content-center"
@@ -48,30 +47,36 @@ class DetailsPage extends Component {
               <Card.Img variant="top" src={image} />
               <Card.Body>
                 <Card.Title>{name}</Card.Title>
-                <Card.Text
-                  dangerouslySetInnerHTML={createMarkup()}
-                  // style={{
-                  //   height: "100px",
-                  //   overflow: "hidden"
-                  // }}
-                />
+                <Card.Text dangerouslySetInnerHTML={createMarkup()} />
               </Card.Body>
             </Card>
           </Col>
           <Col xs={6}>
             <Tabs defaultActiveKey="Cast" id="uncontrolled-tab-example">
               <Tab eventKey="Seasons" title="Seasons">
-                {seasons.map((season, index) => (
-                  <li key={index}>
-                    {season.premiereDate} {" - "} {season.endDate}
-                  </li>
-                ))}
+                <ul style={{ marginTop: "10px", listStyle: "none" }}>
+                  {seasons.map((season, index) => (
+                    <li key={index}>
+                      <span style={{ fontWeight: "bold" }}>
+                        Season {index + 1}
+                      </span>{" "}
+                      {season.premiereDate} {" - "} {season.endDate}
+                      <hr />
+                    </li>
+                  ))}
+                </ul>
               </Tab>
               <Tab eventKey="Cast" title="Cast">
                 <Container>
-                  <ul style={{ listStyle: "none", padding: "0" }}>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: "0",
+                      marginTop: "10px"
+                    }}
+                  >
                     {cast.map((actor, index) => (
-                      <li key={index} style={{ marginBottom: "5pxs" }}>
+                      <li key={index} style={{ marginBottom: "5px" }}>
                         <Row style={{ alignItems: "center" }}>
                           <Col xs={3}>
                             <Image
@@ -79,7 +84,7 @@ class DetailsPage extends Component {
                               style={{ width: "100%", minWidth: "40px" }}
                             />
                           </Col>
-                          <Col xs={{ span: 3, offset: 1 }}>
+                          <Col xs={{ span: 6, offset: 1 }}>
                             <div
                               style={{
                                 display: "flex",
@@ -87,10 +92,13 @@ class DetailsPage extends Component {
                                 height: "100%"
                               }}
                             >
-                              <p>{actor.person.name}</p>
+                              <p>
+                                {actor.person.name} as {actor.character.name}
+                              </p>
                             </div>
                           </Col>
                         </Row>
+                        <hr />
                       </li>
                     ))}
                   </ul>

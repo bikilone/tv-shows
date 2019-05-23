@@ -40,7 +40,7 @@ class Library extends Component {
           {filteredLibrary.map(tvShow => {
             return (
               <SingleCard
-                fill="blue"
+                fill="#000000"
                 id={tvShow.id}
                 key={tvShow.id}
                 src={tvShow.image}

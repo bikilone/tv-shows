@@ -27,8 +27,10 @@ export default function SingleCard(props) {
               overflow: "hidden"
             }}
           />
-          <Button variant="primary">
-            <Link to={`/${id}`}>Details</Link>
+          <Button variant="secondary">
+            <Link to={`/${id}`} style={{ color: "white" }}>
+              Details
+            </Link>
           </Button>
           <IoIosStar
             style={{

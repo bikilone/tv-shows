@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Form, FormControl, Button, Col } from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { searchTvShows } from "../../redux/actions";
@@ -14,15 +14,30 @@ const mapDispatchToProps = dispatch => ({
 
 const Header = props => {
   return (
-    <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+    <Navbar
+      collapseOnSelect
+      expand="sm"
+      bg="dark"
+      variant="dark"
+      style={{ marginBottom: "10px" }}
+      // fixed="top"
+    >
       <Navbar.Brand>
-        <Link to="/">TV SHOWS</Link>
+        <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+          TV SHOWS
+        </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link>LIBRARY</Nav.Link>
-          <Link to="/library" />
+          {/* <Nav.Link> */}
+          <Link
+            to="/library"
+            style={{ color: "#C4C6C8", textDecoration: "none" }}
+          >
+            LIBRARY
+          </Link>
+          {/* </Nav.Link> */}
         </Nav>
         <Nav>
           <Form inline>
@@ -35,9 +50,9 @@ const Header = props => {
                   onChange={props.searchTvShows}
                 />
               </Col>
-              <Col>
+              {/* <Col>
                 <Button variant="outline-info">Search</Button>
-              </Col>
+              </Col> */}
             </Form.Row>
           </Form>
         </Nav>

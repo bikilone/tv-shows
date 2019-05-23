@@ -38,7 +38,7 @@ class CardList extends Component {
         <Spinner animation="border" />
       </div>
     ) : (
-      <Container fluid={true} style={{ marginTop: "20px" }}>
+      <Container fluid={true}>
         <Row>
           {filteredTvShows.map(tvShow => {
             const index = library.findIndex(
@@ -49,7 +49,7 @@ class CardList extends Component {
             if (index === -1) {
               fill = "white";
             } else {
-              fill = "blue";
+              fill = "#000000";
             }
             return (
               <SingleCard
