@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/tv-shows/static/css/main.34de6062.chunk.css",
+    "main.css": "/tv-shows/static/css/main.4a12202c.chunk.css",
     "main.js": "/tv-shows/static/js/main.0ea4732b.chunk.js",
     "main.js.map": "/tv-shows/static/js/main.0ea4732b.chunk.js.map",
     "runtime~main.js": "/tv-shows/static/js/runtime~main.24168937.js",
@@ -8,8 +8,8 @@
     "static/js/2.74903d68.chunk.js": "/tv-shows/static/js/2.74903d68.chunk.js",
     "static/js/2.74903d68.chunk.js.map": "/tv-shows/static/js/2.74903d68.chunk.js.map",
     "index.html": "/tv-shows/index.html",
-    "precache-manifest.bdaa8ea735c76c7d357a69ffe46b6b8a.js": "/tv-shows/precache-manifest.bdaa8ea735c76c7d357a69ffe46b6b8a.js",
+    "precache-manifest.168105cfda84df3b6744584ac7e52f86.js": "/tv-shows/precache-manifest.168105cfda84df3b6744584ac7e52f86.js",
     "service-worker.js": "/tv-shows/service-worker.js",
-    "static/css/main.34de6062.chunk.css.map": "/tv-shows/static/css/main.34de6062.chunk.css.map"
+    "static/css/main.4a12202c.chunk.css.map": "/tv-shows/static/css/main.4a12202c.chunk.css.map"
   }
 }
